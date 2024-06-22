@@ -50,5 +50,14 @@
         silent = true;
       };
     }
+    {
+      mode = "n";
+      key = "-";
+      action = ":Oil --float<CR>";
+      options = {
+        desc = "Open parent directory";
+        silent = true;
+      };
+    }
   ];
 }
