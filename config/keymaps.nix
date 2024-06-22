@@ -45,6 +45,26 @@
         desc = "Disable Left arrow key";
       };
     }
+    {
+      mode = ["n" "v"];
+      key = ";";
+      action = ":";
+      options = {
+        silent = true;
+        noremap = true;
+        desc = "Remap ; -> : ";
+      };
+    }
+    {
+      mode = ["n" "v"];
+      key = ":";
+      action = ";";
+      options = {
+        silent = true;
+        noremap = true;
+        desc = "Remap : -> ; ";
+      };
+    }
 
     # General maps
     {

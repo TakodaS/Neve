@@ -1,7 +1,8 @@
 {
-  # disabledModules = [
-  #   ./utils/neocord.nix
-  # ];
+  disabledModules = [
+    ./utils/neocord.nix
+    ./utils/wakatime.nix
+  ];
   # Import all your configuration modules here
   imports = [
     ./sets.nix
@@ -56,8 +57,9 @@
     ./ui/nvim-notify.nix
     ./ui/nui.nix
 
-    ./utils/better-escape.nix
-    # ./utils/neocord.nix
+    ./utils/better-escape.nix # implement jk mappings.
+    ./utils/neocord.nix
+    ./utils/wakatime.nix
     ./utils/flash.nix
     ./utils/hardtime.nix
     ./utils/harpoon.nix
@@ -66,6 +68,7 @@
     ./utils/mini.nix
     ./utils/neodev.nix
     ./utils/neotest.nix
+    ./utils/neoorg.nix
     ./utils/nvim-autopairs.nix
     ./utils/nvim-colorizer.nix
     ./utils/nvim-surround.nix
@@ -78,10 +81,11 @@
     ./utils/todo-comments.nix
     ./utils/toggleterm.nix
     ./utils/ultimate-autopair.nix
-    ./utils/undotree.nix
+    ./utils/undotree.nix # persist undos and view undotree
     ./utils/vim-be-good.nix
     ./utils/wakatime.nix
     ./utils/whichkey.nix
-    ./utils/wilder.nix
+# TODO: fix python cmps function as ;:e /some/filename is broken
+    ./utils/wilder.nix 
   ];
 }

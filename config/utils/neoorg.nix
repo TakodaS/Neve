@@ -1,0 +1,6 @@
+
+{
+  plugins.neoorg = {
+    enable = true;
+  };
+}
