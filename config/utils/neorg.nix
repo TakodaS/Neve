@@ -1,6 +1,6 @@
 
 {
-  plugins.neoorg = {
+  plugins.neorg = {
     enable = true;
   };
 }
