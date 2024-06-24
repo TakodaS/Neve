@@ -68,7 +68,7 @@
     ./utils/mini.nix
     ./utils/neodev.nix
     ./utils/neotest.nix
-    ./utils/neorg.nix
+    ./utils/zk.nix
     ./utils/nvim-autopairs.nix
     ./utils/nvim-colorizer.nix
     ./utils/nvim-surround.nix

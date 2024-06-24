@@ -1,6 +1,0 @@
-
-{
-  plugins.neorg = {
-    enable = true;
-  };
-}
