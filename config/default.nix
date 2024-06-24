@@ -16,6 +16,7 @@
 
     ./completion/cmp.nix
     ./completion/copilot.nix
+    ./completion/copilot-chat.nix
     ./completion/lspkind.nix
 
     ./dap/dap.nix
