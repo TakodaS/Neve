@@ -1,3 +1,4 @@
+{inputs, ...}:
 {
   disabledModules = [
     ./utils/neocord.nix
@@ -70,6 +71,7 @@
     ./utils/neodev.nix
     ./utils/neorg.nix
     ./utils/neotest.nix
+    ./utils/notes.nix
     ./utils/zk.nix
     ./utils/nvim-autopairs.nix
     ./utils/nvim-colorizer.nix
