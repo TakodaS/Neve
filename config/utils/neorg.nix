@@ -1,0 +1,5 @@
+{
+  programs.neorg = {
+    enable = true;
+  };
+}
