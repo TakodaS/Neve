@@ -7,6 +7,10 @@
       enable = true;
       capabilities = "offsetEncoding =  'utf-16'";
       servers = {
+        tinymist = {
+          enable = true;
+          settings.formatterMode = "typstyle";
+        };
         clangd = {enable = true;};
         lua-ls = {
           enable = true;

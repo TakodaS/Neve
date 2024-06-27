@@ -7,7 +7,7 @@
     keymaps = [
       {
         action = "<cmd> Telescope find_files search_dirs={\"~/second-brain\"} <CR>";
-        key = "<leader>of";
+        key = "<leader>nf";
         options = {
           desc = "Find files in second brain";
         };
@@ -17,7 +17,7 @@
       }
       {
         action = "<cmd> Telescope live_grep search_dirs={\"~/second-brain\"} <CR>";
-        key = "<leader>og";
+        key = "<leader>ng";
         options = {
           desc = "Search contents in second brain";
         };
@@ -27,7 +27,7 @@
       }
       {
         action = "<cmd> ObsidianToggleCheckbox <CR>";
-        key = "<leader>oc";
+        key = "<leader>nc";
         options = {
           desc = "Toggle checkbox";
         };
