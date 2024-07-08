@@ -4,7 +4,6 @@
   inputs = {
     nixvim.url = "github:nix-community/nixvim";
     flake-utils.url = "github:numtide/flake-utils";
-    neorg-overlay.url = "github:nvim-neorg/nixpkgs-neorg-overlay";
   };
 
   outputs = {
@@ -12,16 +11,13 @@
     nixpkgs,
     nixvim,
     flake-utils,
-    neorg-overlay,
     ...
   } @ inputs: let
     config = import ./config; # import the module directly
   in
     flake-utils.lib.eachDefaultSystem (system: let
       nixvimLib = nixvim.lib.${system};
-      pkgs = import nixpkgs {inherit system;
-        overlays = [ neorg-overlay.overlays.default ];
-      };
+      pkgs = import nixpkgs {inherit system;};
       nixvim' = nixvim.legacyPackages.${system};
       nvim = nixvim'.makeNixvimWithModule {
         inherit pkgs;
