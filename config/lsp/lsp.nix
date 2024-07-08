@@ -7,6 +7,7 @@
       enable = true;
       capabilities = "offsetEncoding =  'utf-16'";
       servers = {
+        zls.enable=true;
         tinymist = {
           enable = true;
           settings.formatterMode = "typstyle";
