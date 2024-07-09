@@ -78,6 +78,7 @@
     ./utils/persistence.nix
     ./utils/plenary.nix
     ./utils/project-nvim.nix
+    ./utils/remote-nvim.nix
     ./utils/sidebar.nix
     ./utils/tmux-navigator.nix
     ./utils/todo-comments.nix
