@@ -35,6 +35,16 @@
           "n"
         ];
       }
+      {
+        action = "<cmd> ObsidianDailies<CR>";
+        key = "<leader>nd";
+        options = {
+          desc = "Open Obsidian daily notes";
+        };
+        mode = [
+          "n"
+        ];
+      }
     ];
 
     plugins = {
