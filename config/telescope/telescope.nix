@@ -84,7 +84,11 @@
       };
       "<leader>sb" = {
         action = "current_buffer_fuzzy_find";
-        options.desc = "Buffer";
+        options.desc = "Find in buffer";
+      };
+      "<leader>sB" = {
+        action = "buffers";
+        options.desc = "Buffers";
       };
       "<leader>sc" = {
         action = "command_history";
