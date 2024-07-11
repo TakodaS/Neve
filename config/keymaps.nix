@@ -50,7 +50,6 @@
       key = ";";
       action = ":";
       options = {
-        silent = true;
         noremap = true;
         desc = "Remap ; -> : ";
       };
@@ -60,7 +59,6 @@
       key = ":";
       action = ";";
       options = {
-        silent = true;
         noremap = true;
         desc = "Remap : -> ; ";
       };

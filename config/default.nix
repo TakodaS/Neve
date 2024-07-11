@@ -88,7 +88,5 @@
     ./utils/vim-be-good.nix
     ./utils/wakatime.nix
     ./utils/whichkey.nix
-# TODO: fix python cmps function as ;:e /some/filename is broken
-    ./utils/wilder.nix 
   ];
 }
