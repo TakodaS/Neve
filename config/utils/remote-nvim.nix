@@ -12,6 +12,10 @@
     })
   ];
   extraConfigLua = ''
-    require("remote-nvim").setup()
+    require("remote-nvim").setup({
+      log = {
+      level = "debug",
+        }
+      })
     '';
 }

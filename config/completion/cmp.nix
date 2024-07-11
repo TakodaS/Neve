@@ -1,14 +1,8 @@
 {
   plugins = {
-    cmp-nvim-lsp = {enable = true;}; # lsp
-      cmp-buffer = {enable = true;};
-    copilot-cmp = {enable = true;}; # copilot suggestions
-      cmp-path = {enable = true;}; # file system paths
-      cmp_luasnip = {enable = true;}; # snippets
-      cmp-cmdline = {enable = true;}; # autocomplete for cmdline
       cmp = {
         enable = true;
-        autoEnableSources = false;
+        autoEnableSources = true;
         settings = {
           experimental = {
             ghost_text = true;
@@ -16,19 +10,14 @@
         };
         settings = {
           mapping = {
-            "<C-j>" =" cmp.mapping.select_next_item()";
-            "<C-k>" =" cmp.mapping.select_prev_item()";
-            "<C-e>" =" cmp.mapping.abort()";
-
-            "<C-b>" =" cmp.mapping.scroll_docs(-4)";
-
-            "<C-f>" =" cmp.mapping.scroll_docs(4)";
-
-            "<C-Space>" =" cmp.mapping.complete()";
-
-            "<C-y>" =" cmp.mapping.confirm({ select = true })";
-
-            "<S-CR>" =" cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })";
+            "<C-j>" = "cmp.mapping.select_next_item()";
+            "<C-k>" = "cmp.mapping.select_prev_item()";
+            "<C-e>" = "cmp.mapping.abort()";
+            "<C-b>" = "cmp.mapping.scroll_docs(-4)";
+            "<C-f>" = "cmp.mapping.scroll_docs(4)";
+            "<C-Space>" = "cmp.mapping.complete()";
+            "<C-y>" = "cmp.mapping.confirm({ select = true })";
+            "<S-CR>" = "cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })";
           };
           snippet = {
             expand = "function(args) require('luasnip').lsp_expand(args.body) end";
@@ -46,6 +35,10 @@
             group_index = 1;
           }
           {
+            name = "fuzzy_path";
+            group_index = 1;
+          }
+          {
             name = "luasnip";
             group_index = 1;
           }
@@ -55,6 +48,10 @@
           }
           {
             name = "buffer";
+            group_index = 2;
+          }
+          {
+            name = "fuzzy_buffer";
             group_index = 2;
           }
           ];
@@ -78,15 +75,22 @@
             expandable_indicator = true;
           };
         };
-  cmdline = {
-    "/" = {sources =[{name = "buffer";}];};
-    "?" = {sources =[{name = "buffer";}];};
-    ":" = {sources =[{name = "path";}];};
-  };
+        cmdline = let
+          addView = attr: attr // {
+             mapping.__raw = "cmp.mapping.preset.cmdline()";
+          };
+      in builtins.mapAttrs (name: value: addView value)
+      {
+        "/" = {sources =[{name = "buffer";}];};
+        "?" = {sources =[{name = "buffer";}];};
+        ":" = {sources =[{name = "fuzzy_path";} {name = "cmdline"; option = {ignore_cmds = ["Man" "!"];};}];};
+      };
+      filetype = {
+        gitcommit = {sources = [{name = "cmp_git";}{name="buffer";}];};
+      };
       };
   };
   extraConfigLua = ''
-    luasnip = require("luasnip")
     kind_icons = {
       Text = "󰊄",
       Method = "",
