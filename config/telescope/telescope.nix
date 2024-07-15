@@ -45,11 +45,11 @@
         action = "command_history";
         options.desc = "Command History";
       };
-       "<leader>a" = {
-        mode=["n" "v"];
+      "<leader>a" = {
+        mode = ["n" "v"];
         action = "";
         options.desc = "Copilot actions";
-       };
+      };
       "<leader>b" = {
         action = "buffers";
         options.desc = "+buffer";

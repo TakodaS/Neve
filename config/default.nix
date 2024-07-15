@@ -1,5 +1,4 @@
-{inputs, ...}:
-{
+{inputs, ...}: {
   disabledModules = [
     ./utils/neocord.nix
     ./utils/wakatime.nix
