@@ -36,9 +36,10 @@
         };
       };
 
-      packages = {
+      packages = rec {
         # Lets you run `nix run .` to start nixvim
-        default = nvim;
+        neve = nvim;
+        default = neve;
       };
 
       formatter = pkgs.alejandra;

@@ -1,3 +1,32 @@
+let
+backJump = ''function(fallback)
+              local luasnip = require('luasnip')
+              if luasnip.locally_jumpable(-1) then
+                luasnip.jump(-1)
+              else
+                fallback()
+                  end
+                  end
+                  '';
+forwardJump =  ''function(fallback)
+              local luasnip = require('luasnip')
+              if luasnip.locally_jumpable(1) then
+                luasnip.jump(1)
+              else
+                fallback()
+                  end
+                  end
+                  '';
+toggleComplete =''
+    function()
+          if cmp.visible() then
+            cmp.abort()
+          else
+            cmp.complete()
+          end
+        end
+        '';
+in
 {
   plugins = {
       cmp = {
@@ -12,10 +41,12 @@
           mapping = {
             "<C-j>" = "cmp.mapping.select_next_item()";
             "<C-k>" = "cmp.mapping.select_prev_item()";
-            "<C-e>" = "cmp.mapping.abort()";
+            "<C-h>" = "${ backJump }";
+            "<C-l>" = "${ forwardJump }";
+            "<C-p>" = "cmp.mapping.select_prev_item()";
+            "<C-n>" = "cmp.mapping.select_next_item()";
             "<C-b>" = "cmp.mapping.scroll_docs(-4)";
-            "<C-f>" = "cmp.mapping.scroll_docs(4)";
-            "<C-Space>" = "cmp.mapping.complete()";
+            "<C-x>" = "${toggleComplete}";
             "<C-y>" = "cmp.mapping.confirm({ select = true })";
             "<S-CR>" = "cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })";
           };

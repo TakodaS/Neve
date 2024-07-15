@@ -45,6 +45,16 @@
           "n"
         ];
       }
+      {
+        action = "<cmd> ObsidianTags<CR>";
+        key = "<leader>nt";
+        options = {
+          desc = "Open Obsidian tags";
+        };
+        mode = [
+          "n"
+        ];
+      }
     ];
 
     plugins = {
