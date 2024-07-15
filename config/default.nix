@@ -69,6 +69,7 @@
     ./utils/markdown-preview.nix
     ./utils/mini.nix
     ./utils/neodev.nix
+    ./utils/neogen.nix
     ./utils/neotest.nix
     ./utils/notes.nix
     ./utils/nvim-autopairs.nix
