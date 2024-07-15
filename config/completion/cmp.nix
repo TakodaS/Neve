@@ -62,6 +62,10 @@ in
             group_index = 1;
           }
           {
+            name= "codeium";
+            group_index = 1;
+            }
+          {
             name = "path";
             group_index = 1;
           }
