@@ -70,11 +70,11 @@
             path = "~/second-brain";
           }
         ];
-        dailyNotes = {
-          folder = "journal/dailies";
+        daily_notes = {
+          folder = "dailies";
           dateFormat = "%Y-%m-%d";
           aliasFormat = "%B %-d, %Y";
-          #template = "daily.md";
+          template = "my_templates/daily_log.md";
         };
         templates = {
           subdir = "templates";

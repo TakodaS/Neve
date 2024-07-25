@@ -110,6 +110,9 @@
       # Use conform-nvim for gq formatting. ('formatexpr' is set to vim.lsp.formatexpr(), so you can format lines via gq if the language server supports it)
       formatexpr = "v:lua.require'conform'.formatexpr()";
 
+      # Relaces blocks of text with a character by default 
+      conceallevel = 1;
+
       laststatus = 3; # (https://neovim.io/doc/user/options.html#'laststatus')
     };
 
