@@ -13,7 +13,7 @@
     }
     {
       mode = ["n" "v"];
-      key = "<leader>at";
+      key = "<leader>aT";
       action = "<cmd>CopilotChatTests<CR>";
       options = {
         desc = "CopilotChat - Generate Tests";

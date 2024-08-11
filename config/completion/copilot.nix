@@ -30,6 +30,7 @@
       };
     };
     filetypes = {
+      txt = false;
       yaml = false;
       markdown = false;
       help = false;
