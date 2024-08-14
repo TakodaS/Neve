@@ -7,6 +7,7 @@
       enable = true;
       capabilities = "offsetEncoding =  'utf-16'";
       servers = {
+        svelte.enable = true;
         zls.enable = true;
         tinymist = {
           enable = true;
