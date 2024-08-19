@@ -65,7 +65,9 @@
     ./utils/hardtime.nix
     ./utils/harpoon.nix
     ./utils/illuminate.nix
+    ./utils/leap.nix
     ./utils/markdown-preview.nix
+    ./utils/matchup.nix
     ./utils/mini.nix
     ./utils/neodev.nix
     ./utils/neogen.nix
