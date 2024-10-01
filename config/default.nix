@@ -1,5 +1,8 @@
 {inputs, ...}: {
+  plugins.web-devicons.enable = true;
   disabledModules = [
+    ./none-ls/none-ls.nix
+     ./languages/nvim-lint.nix
     ./utils/neocord.nix
     ./utils/wakatime.nix
   ];
@@ -28,7 +31,7 @@
     ./git/neogit.nix
 
     ./languages/nvim-jdtls.nix
-    ./languages/nvim-lint.nix
+     ./languages/nvim-lint.nix
     ./languages/typescript-tools-nvim.nix
     ./languages/treesitter/treesitter.nix
     ./languages/treesitter/treesitter-context.nix

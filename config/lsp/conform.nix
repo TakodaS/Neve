@@ -1,52 +1,73 @@
-{
-  plugins.conform-nvim = {
-    enable = true;
-    notifyOnError = true;
-    formattersByFt = {
-      html = [["prettierd" "prettier"]];
-      css = [["prettierd" "prettier"]];
-      javascript = [["prettierd" "prettier"]];
-      javascriptreact = [["prettierd" "prettier"]];
-      typescript = [["prettierd" "prettier"]];
-      typescriptreact = [["prettierd" "prettier"]];
-      java = ["google-java-format"];
-      python = ["black"];
-      lua = ["stylua"];
-      nix = ["alejandra"];
-      markdown = [["prettierd" "prettier"]];
-      rust = ["rustfmt"];
+{lib, pkgs,...}: 
+  let 
+    formatCmds =''
+    local buf = (args and args.buf) or 0
+      vim.fn.system('treefmt ' .. vim.api.nvim_buf_get_name(buf))
+      vim.cmd('e!')
+    '';
+    formatFunc2 = ''
+    :lua ${formatCmds} <cr>
+    '';
+    formatFunc = "<cmd>lua require('conform').format()<cr>";
+  in
+{ 
+  plugins.conform-nvim = 
+  { 
+    enable = true; 
+    settings = { 
+      formatters = {
+        nix-fmt = {
+        command = "treefmt"; 
+        args = ["--walk" "filesystem" "$FILENAME"]; 
+        stdin=false;
+        };
+      };
+      lsp_format = "never";
+      log_level="trace";
+      notify_on_error = true;
+      notify_no_formatters = true;
+      stop_after_first = true;
+      formatters_by_ft = {
+        "*" = ["nix-fmt"];
+         # "_" = [
+         #    "squeeze_blanks"
+         #    "trim_whitespace"
+         #    "trim_newlines"
+         #  ];
+      };
     };
   };
 
-  keymaps = [
-    {
-      mode = "n";
-      key = "<leader>uf";
-      action = ":FormatToggle<CR>";
-      options = {
-        desc = "Toggle Format";
-        silent = true;
-      };
-    }
-    {
-      mode = "n";
-      key = "<leader>cf";
-      action = "<cmd>lua require('conform').format()<cr>";
-      options = {
-        silent = true;
-        desc = "Format Buffer";
-      };
-    }
+  keymaps = 
+  [
+  {
+    mode = "n";
+    key = "<leader>uf";
+    action = ":FormatToggle<CR>";
+    options = {
+      desc = "Toggle Format";
+      silent = true;
+    };
+  }
+  {
+    mode = "n";
+    key = "<leader>cf";
+    action = formatFunc;
+    options = {
+      silent = true;
+      desc = "Format Buffer";
+    };
+  }
 
-    {
-      mode = "v";
-      key = "<leader>cF";
-      action = "<cmd>lua require('conform').format()<cr>";
-      options = {
-        silent = true;
-        desc = "Format Lines";
-      };
-    }
+  {
+    mode = "v";
+    key = "<leader>cF";
+    action = formatFunc;
+    options = {
+      silent = true;
+      desc = "Format Lines";
+    };
+  }
   ];
 
   extraConfigLua = ''
@@ -59,12 +80,12 @@
         if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
           return
         end
-        return { timeout_ms = 500, lsp_fallback = true }
+        return {}
       end,
     })
 
     local function show_notification(message, level)
-      notify(message, level, { title = "conform.nvim" })
+      notify(message, level, { title = "Formatting" })
     end
 
     vim.api.nvim_create_user_command("FormatToggle", function(args)
