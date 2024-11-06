@@ -61,13 +61,17 @@
     zen-mode.enable = true;
     headlines.enable = true;
 
-    obsidian = {
-      enable = true;
+    obsidian = 
+    let
+    path = "/home/austen/second-brain";
+    in
+    {
+      enable = if builtins.pathExists path then true else false;
       settings = {
         workspaces = [
           {
+            inherit path;
             name = "second-brain";
-            path = "~/second-brain";
           }
         ];
         daily_notes = {
